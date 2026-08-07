@@ -3,17 +3,55 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WITMOP</title>
-  <link rel="stylesheet" href="style.css"
+  
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <h1>
-    War in the Midst of Peace
-  </h1>
-  <p id="p1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-  <p id="p2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-  <p id="p3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+  
+  <!-- Opening Screen -->
+  
+  <div id="intro">
+    
+    <h1>War in the Midst of Peace</h1>
+    
+    <button id="startBtn">
+      Click Me for a Surprise
+    </button>
+    
+  </div>
+  
+  <!-- Intro Video -->
+  
+  <div id="videoSection">
+    
+    <video id="introVideo" playsinline>
+      <source src="Video/intro.mp4" type="video/mp4">
+    </video>
+    
+    <div id="overlay"></div>
+    
+    <button id="continueBtn">
+      Continue Reading
+    </button>
+    
+  </div>
+  
+  <!-- Story -->
+  
+  <div id="story">
+    
+    <img src="panel1.jpg" class="panel">
+    <img src="panel2.jpg" class="panel">
+    <img src="panel3.jpg" class="panel">
+    <img src="panel4.jpg" class="panel">
+    
+  </div>
+  
+  <script src="script.js"></script>
+  
 </body>
+
 </html>

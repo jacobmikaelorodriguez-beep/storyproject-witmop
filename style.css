@@ -1,53 +1,258 @@
 body{
-  background-color: black;
+    margin:0;
+    background:black;
+    overflow-x:hidden;
+    font-family:Poppins,sans-serif;
 }
-h1 {
-  font-family: 'Poppins', sans-serif;
-  font-size: 50px;
-  text-transform: uppercase;
-  background: linear-gradient(to right, red, blue);
-  background-size: 200%;
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: animate-gradient 2.5s linear infinite;
+
+/* Opening Screen */
+
+#intro{
+
+    height:100vh;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    animation:fadeIn 1s;
+
 }
-#p1{
-  font-family:'Poppins', sans-serif;
-  font-size: 20px;
-  text-transform: uppercase;
-  background: linear-gradient(to right, red, blue);
-  background-size: 200%;
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: animate-gradient 2.5s linear infinite;
+
+h1{
+
+    font-size:55px;
+
+    text-transform:uppercase;
+
+    background:linear-gradient(to right,red,blue);
+
+    background-size:200%;
+
+    background-clip:text;
+
+    -webkit-background-clip:text;
+
+    -webkit-text-fill-color:transparent;
+
+    animation:animate-gradient 3s linear infinite;
+
 }
-#p2 {
-  font-family: 'Poppins', sans-serif;
-  font-size: 20px;
-  text-transform: uppercase;
-  background: linear-gradient(to right, red, blue);
-  background-size: 200%;
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: animate-gradient 2.5s linear infinite;
+
+#startBtn{
+
+    margin-top:35px;
+
+    padding:18px 40px;
+
+    font-size:20px;
+
+    border:none;
+
+    border-radius:50px;
+
+    cursor:pointer;
+
+    background:white;
+
+    transition:.3s;
+
 }
-#p3 {
-  font-family: 'Poppins', sans-serif;
-  font-size: 20px;
-  text-transform: uppercase;
-  background: linear-gradient(to right, red, blue);
-  background-size: 200%;
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: animate-gradient 2.5s linear infinite;
+
+#startBtn:hover{
+
+    transform:scale(1.1);
+
+}
+
+/* Video Section */
+
+#videoSection{
+
+    display:none;
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:100vh;
+
+    justify-content:center;
+
+    align-items:center;
+
+    overflow:hidden;
+
+}
+
+/* Fullscreen Video */
+
+#introVideo{
+
+    position:absolute;
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+}
+
+/* Overlay */
+
+#overlay{
+
+    position:absolute;
+
+    width:100%;
+
+    height:100%;
+
+    background:rgba(0,0,0,.25);
+
+}
+
+/* Continue Button */
+
+#continueBtn{
+
+    position:relative;
+
+    z-index:5;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    padding:18px 45px;
+
+    font-size:22px;
+
+    border:none;
+
+    border-radius:40px;
+
+    cursor:pointer;
+
+    transition:1s;
+
+    box-shadow:0 0 20px crimson;
+
+    animation:pulse 2s infinite;
+
+}
+
+#continueBtn.show{
+
+    opacity:1;
+
+    pointer-events:auto;
+
+}
+
+/* Story */
+
+#story{
+
+    display:none;
+
+}
+
+.panel{
+
+    width:100%;
+
+    display:block;
+
+    opacity:0;
+
+    transform:translateY(50px);
+
+    transition:1s;
+
+}
+
+.panel.show{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+}
+
+/* Animations */
+
+.fadeOut{
+
+    animation:fadeOut 1s forwards;
+
+}
+
+.fadeIn{
+
+    animation:fadeIn 1s forwards;
+
+}
+
+@keyframes fadeOut{
+
+    from{opacity:1;}
+
+    to{opacity:0;}
+
+}
+
+@keyframes fadeIn{
+
+    from{opacity:0;}
+
+    to{opacity:1;}
+
+}
+
+@keyframes pulse{
+
+    0%{
+
+        transform:scale(1);
+
+        box-shadow:0 0 15px crimson;
+
+    }
+
+    50%{
+
+        transform:scale(1.08);
+
+        box-shadow:0 0 35px red;
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+        box-shadow:0 0 15px crimson;
+
+    }
+
 }
 
 @keyframes animate-gradient{
-  to{
-    background-position: 200%;
-  }
+
+    to{
+
+        background-position:200%;
+
+    }
+
 }

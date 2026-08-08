@@ -1,77 +1,172 @@
-const intro = document.getElementById("intro");
+/* ========================= */
+/* GET ELEMENTS */
+/* ========================= */
 
-const startBtn = document.getElementById("startBtn");
+const intro =
+    document.getElementById("intro");
 
-const videoSection = document.getElementById("videoSection");
+const startBtn =
+    document.getElementById("startBtn");
 
-const introVideo = document.getElementById("introVideo");
+const videoSection =
+    document.getElementById("videoSection");
 
-const continueBtn = document.getElementById("continueBtn");
+const introVideo =
+    document.getElementById("introVideo");
 
-const story = document.getElementById("story");
+const skipBtn =
+    document.getElementById("skipBtn");
 
-const panels = document.querySelectorAll(".panel");
+const continueBtn =
+    document.getElementById("continueBtn");
 
-// Start Intro
+const story =
+    document.getElementById("story");
+
+const panels =
+    document.querySelectorAll(".panel");
+
+
+let skipTimer;
+
+
+/* ========================= */
+/* START INTRO */
+/* ========================= */
 
 startBtn.onclick = () => {
-  
-  intro.classList.add("fadeOut");
-  
-  setTimeout(() => {
-    
-    intro.style.display = "none";
-    
-    videoSection.style.display = "flex";
-    
-    introVideo.play();
-    
-  }, 1000);
-  
+
+    intro.classList.add("fadeOut");
+
+
+    setTimeout(() => {
+
+        intro.style.display = "none";
+
+        videoSection.style.display = "flex";
+
+
+        /* Reset video */
+
+        introVideo.currentTime = 0;
+
+
+        /* Start video with its built-in audio */
+
+        introVideo.muted = false;
+
+        introVideo.play();
+
+
+        /* ========================= */
+        /* SHOW SKIP AFTER 5 SECONDS */
+        /* ========================= */
+
+        skipTimer = setTimeout(() => {
+
+            skipBtn.classList.add("show");
+
+        },5000);
+
+
+    },1000);
+
 };
 
-// When video ends
+
+/* ========================= */
+/* VIDEO FINISHED */
+/* ========================= */
 
 introVideo.onended = () => {
-  
-  continueBtn.classList.add("show");
-  
+
+    clearTimeout(skipTimer);
+
+    skipBtn.classList.remove("show");
+
+    continueBtn.classList.add("show");
+
 };
 
-// Continue Reading
+
+/* ========================= */
+/* SKIP INTRO */
+/* ========================= */
+
+skipBtn.onclick = () => {
+
+    clearTimeout(skipTimer);
+
+    introVideo.pause();
+
+    skipBtn.classList.remove("show");
+
+    videoSection.classList.add("fadeOut");
+
+
+    setTimeout(() => {
+
+        videoSection.style.display = "none";
+
+        story.style.display = "block";
+
+        story.classList.add("fadeIn");
+
+        window.dispatchEvent(
+            new Event("scroll")
+        );
+
+    },1000);
+
+};
+
+
+/* ========================= */
+/* CONTINUE READING */
+/* ========================= */
 
 continueBtn.onclick = () => {
-  
-  videoSection.classList.add("fadeOut");
-  
-  setTimeout(() => {
-    
-    videoSection.style.display = "none";
-    
-    story.style.display = "block";
-    
-    story.classList.add("fadeIn");
-    
-    window.dispatchEvent(new Event("scroll"));
-    
-  }, 1000);
-  
+
+    introVideo.pause();
+
+    videoSection.classList.add("fadeOut");
+
+
+    setTimeout(() => {
+
+        videoSection.style.display = "none";
+
+        story.style.display = "block";
+
+        story.classList.add("fadeIn");
+
+        window.dispatchEvent(
+            new Event("scroll")
+        );
+
+    },1000);
+
 };
 
-// Fade panels while scrolling
+
+/* ========================= */
+/* PANEL SCROLL ANIMATION */
+/* ========================= */
 
 window.addEventListener("scroll", () => {
-  
-  panels.forEach(panel => {
-    
-    const top = panel.getBoundingClientRect().top;
-    
-    if (top < window.innerHeight - 100) {
-      
-      panel.classList.add("show");
-      
-    }
-    
-  });
-  
+
+    panels.forEach(panel => {
+
+        const top =
+            panel.getBoundingClientRect().top;
+
+
+        if(top < window.innerHeight - 100){
+
+            panel.classList.add("show");
+
+        }
+
+    });
+
 });

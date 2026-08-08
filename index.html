@@ -2,56 +2,102 @@
 <html>
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WITMOP</title>
-  
-  <link rel="stylesheet" href="style.css">
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>WITMOP</title>
+
+    <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
-  
-  <!-- Opening Screen -->
-  
-  <div id="intro">
-    
-    <h1>War in the Midst of Peace</h1>
-    
-    <button id="startBtn">
-      Click Me for a Surprise
-    </button>
-    
-  </div>
-  
-  <!-- Intro Video -->
-  
-  <div id="videoSection">
-    
-    <video id="introVideo" autoplay playsinline>
-      <source src="introo.mp4" type="video/mp4">
-    </video>
-    
-    <div id="overlay"></div>
-    
-    <button id="continueBtn">
-      Continue Reading
-    </button>
-    
-  </div>
-  
-  <!-- Story -->
-  
-  <div id="story">
-    
-    <img src="panel1.jpg" class="panel">
-    <img src="panel2.jpg" class="panel">
-    <img src="panel3.jpg" class="panel">
-    <img src="panel4.jpg" class="panel">
-    
-  </div>
-  
-  <script src="script.js"></script>
-  
+
+    <!-- ========================= -->
+    <!-- MAIN INTRO SCREEN -->
+    <!-- ========================= -->
+
+    <div id="intro">
+
+        <h1>
+            War in the Midst of Peace
+        </h1>
+
+        <button id="startBtn">
+            Click Me for a Surprise
+        </button>
+
+    </div>
+
+
+    <!-- ========================= -->
+    <!-- INTRO VIDEO -->
+    <!-- ========================= -->
+
+    <div id="videoSection">
+
+        <video id="introVideo" playsinline>
+
+            <source src="intro.mp4" type="video/mp4">
+
+            Your browser does not support video.
+
+        </video>
+
+
+        <div id="overlay"></div>
+
+
+        <!-- Skip Button -->
+
+        <button id="skipBtn">
+            Skip Intro
+        </button>
+
+
+        <!-- Continue Reading Button -->
+
+        <button id="continueBtn">
+            Continue Reading
+        </button>
+
+    </div>
+
+
+    <!-- ========================= -->
+    <!-- STORY -->
+    <!-- ========================= -->
+
+    <div id="story">
+
+        <!-- Story Title -->
+
+        <div id="storyTitle">
+
+            <h1>
+                War in the Midst of Peace
+            </h1>
+
+        </div>
+
+
+        <!-- Manhwa Panels -->
+
+        <img src="panel1.jpg" class="panel">
+
+        <img src="panel2.jpg" class="panel">
+
+        <img src="panel3.jpg" class="panel">
+
+        <img src="panel4.jpg" class="panel">
+
+    </div>
+
+
+    <script src="script.js"></script>
+
 </body>
 
 </html>

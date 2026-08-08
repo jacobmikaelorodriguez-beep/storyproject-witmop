@@ -1,11 +1,23 @@
+/* ========================= */
+/* GENERAL */
+/* ========================= */
+
 body{
+
     margin:0;
+
     background:black;
+
     overflow-x:hidden;
-    font-family:Poppins,sans-serif;
+
+    font-family:'Poppins', sans-serif;
+
 }
 
-/* Opening Screen */
+
+/* ========================= */
+/* MAIN INTRO SCREEN */
+/* ========================= */
 
 #intro{
 
@@ -19,17 +31,29 @@ body{
 
     align-items:center;
 
+    text-align:center;
+
     animation:fadeIn 1s;
 
 }
 
-h1{
+
+#intro h1{
 
     font-size:55px;
 
     text-transform:uppercase;
 
-    background:linear-gradient(to right,red,blue);
+    max-width:90%;
+
+    margin:0;
+
+    background:linear-gradient(
+        to right,
+        red,
+        blue,
+        red
+    );
 
     background-size:200%;
 
@@ -42,6 +66,11 @@ h1{
     animation:animate-gradient 3s linear infinite;
 
 }
+
+
+/* ========================= */
+/* START BUTTON */
+/* ========================= */
 
 #startBtn{
 
@@ -59,9 +88,12 @@ h1{
 
     background:white;
 
+    color:black;
+
     transition:.3s;
 
 }
+
 
 #startBtn:hover{
 
@@ -69,7 +101,10 @@ h1{
 
 }
 
-/* Video Section */
+
+/* ========================= */
+/* VIDEO SECTION */
+/* ========================= */
 
 #videoSection{
 
@@ -91,13 +126,16 @@ h1{
 
     overflow:hidden;
 
+    background:black;
+
 }
 
-/* Fullscreen Video */
 
 #introVideo{
 
     position:absolute;
+
+    inset:0;
 
     width:100%;
 
@@ -105,13 +143,18 @@ h1{
 
     object-fit:cover;
 
+    z-index:1;
+
 }
 
-/* Overlay */
+
+/* Dark Overlay */
 
 #overlay{
 
     position:absolute;
+
+    inset:0;
 
     width:100%;
 
@@ -119,19 +162,75 @@ h1{
 
     background:rgba(0,0,0,.25);
 
+    z-index:2;
+
 }
 
-/* Continue Button */
+
+/* ========================= */
+/* SKIP BUTTON */
+/* ========================= */
+
+#skipBtn{
+
+    position:absolute;
+
+    top:30px;
+
+    right:30px;
+
+    z-index:10;
+
+    padding:12px 25px;
+
+    font-size:16px;
+
+    border:1px solid white;
+
+    border-radius:30px;
+
+    background:rgba(0,0,0,.5);
+
+    color:white;
+
+    cursor:pointer;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:.5s;
+
+}
+
+
+#skipBtn.show{
+
+    opacity:1;
+
+    pointer-events:auto;
+
+}
+
+
+#skipBtn:hover{
+
+    background:white;
+
+    color:black;
+
+}
+
+
+/* ========================= */
+/* CONTINUE READING */
+/* ========================= */
 
 #continueBtn{
 
     position:relative;
 
-    z-index:5;
-
-    opacity:0;
-
-    pointer-events:none;
+    z-index:10;
 
     padding:18px 45px;
 
@@ -143,6 +242,14 @@ h1{
 
     cursor:pointer;
 
+    background:white;
+
+    color:black;
+
+    opacity:0;
+
+    pointer-events:none;
+
     transition:1s;
 
     box-shadow:0 0 20px crimson;
@@ -150,6 +257,7 @@ h1{
     animation:pulse 2s infinite;
 
 }
+
 
 #continueBtn.show{
 
@@ -159,13 +267,78 @@ h1{
 
 }
 
-/* Story */
+
+/* ========================= */
+/* STORY */
+/* ========================= */
 
 #story{
 
     display:none;
 
+    width:100%;
+
+    background:black;
+
 }
+
+
+/* ========================= */
+/* STORY TITLE */
+/* ========================= */
+
+#storyTitle{
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    padding:40px;
+
+    box-sizing:border-box;
+
+}
+
+
+#storyTitle h1{
+
+    font-size:60px;
+
+    text-transform:uppercase;
+
+    max-width:90%;
+
+    margin:0;
+
+    background:linear-gradient(
+        to right,
+        red,
+        blue,
+        red
+    );
+
+    background-size:200%;
+
+    background-clip:text;
+
+    -webkit-background-clip:text;
+
+    -webkit-text-fill-color:transparent;
+
+    animation:animate-gradient 3s linear infinite;
+
+}
+
+
+/* ========================= */
+/* MANHWA PANELS */
+/* ========================= */
 
 .panel{
 
@@ -181,6 +354,7 @@ h1{
 
 }
 
+
 .panel.show{
 
     opacity:1;
@@ -189,7 +363,10 @@ h1{
 
 }
 
-/* Animations */
+
+/* ========================= */
+/* TRANSITIONS */
+/* ========================= */
 
 .fadeOut{
 
@@ -197,27 +374,62 @@ h1{
 
 }
 
+
 .fadeIn{
 
     animation:fadeIn 1s forwards;
 
 }
 
-@keyframes fadeOut{
 
-    from{opacity:1;}
+/* ========================= */
+/* ANIMATIONS */
+/* ========================= */
 
-    to{opacity:0;}
+@keyframes animate-gradient{
+
+    to{
+
+        background-position:200%;
+
+    }
 
 }
+
 
 @keyframes fadeIn{
 
-    from{opacity:0;}
+    from{
 
-    to{opacity:1;}
+        opacity:0;
+
+    }
+
+    to{
+
+        opacity:1;
+
+    }
 
 }
+
+
+@keyframes fadeOut{
+
+    from{
+
+        opacity:1;
+
+    }
+
+    to{
+
+        opacity:0;
+
+    }
+
+}
+
 
 @keyframes pulse{
 
@@ -242,16 +454,6 @@ h1{
         transform:scale(1);
 
         box-shadow:0 0 15px crimson;
-
-    }
-
-}
-
-@keyframes animate-gradient{
-
-    to{
-
-        background-position:200%;
 
     }
 

@@ -42,31 +42,38 @@ const nextChapter =
 /* ========================= */
 /* CHAPTER DATA */
 /* ========================= */
+/*
+   Put your chapters here.
+
+   "number" = folder number
+   "name"   = chapter title
+   "panels" = number of panels
+*/
 
 const chapters = [
 
     {
         number: 1,
-        name: "The Beginning",
-        panels: 5
+        name: "A well-known tech",
+        panels: 9
     },
 
     {
         number: 2,
-        name: "A New Day",
-        panels: 7
+        name: "Chapter 2 Name",
+        panels: 5
     },
 
     {
         number: 3,
-        name: "The Conflict",
-        panels: 6
+        name: "Crossing Paths with You",
+        panels: 7
     },
 
     {
         number: 4,
-        name: "Revelations",
-        panels: 8
+        name: "For The Girl Who Kept Dropping Her Guard",
+        panels: 6
     }
 
 ];
@@ -96,7 +103,9 @@ function loadChapter(){
         chapters[currentChapter];
 
 
-    /* Update chapter title */
+    /* ========================= */
+    /* UPDATE CHAPTER TITLE */
+    /* ========================= */
 
     chapterNumber.textContent =
         "Chapter " + chapter.number;
@@ -105,12 +114,16 @@ function loadChapter(){
         chapter.name;
 
 
-    /* Remove old panels */
+    /* ========================= */
+    /* REMOVE OLD PANELS */
+    /* ========================= */
 
     panelsContainer.innerHTML = "";
 
 
-    /* Create chapter panels */
+    /* ========================= */
+    /* LOAD PANELS */
+    /* ========================= */
 
     for(
         let i = 1;
@@ -122,11 +135,31 @@ function loadChapter(){
             document.createElement("img");
 
 
+        /*
+           IMPORTANT:
+
+           This matches your GitHub folders:
+
+           Chapter-1/
+               Panel1.jpeg
+               Panel2.jpeg
+               ...
+
+           Chapter-2/
+               Panel1.jpeg
+               Panel2.jpeg
+               ...
+        */
+
         img.src =
-            `Chapter${chapter.number}/panel${i}.jpg`;
+            `Chapter-${chapter.number}/Panel${i}.jpeg`;
 
 
         img.classList.add("panel");
+
+
+        img.alt =
+            `Chapter ${chapter.number}, Panel ${i}`;
 
 
         panelsContainer.appendChild(img);
@@ -135,7 +168,7 @@ function loadChapter(){
 
 
     /* ========================= */
-    /* PREVIOUS BUTTON */
+    /* PREVIOUS CHAPTER BUTTON */
     /* ========================= */
 
     if(currentChapter === 0){
@@ -150,7 +183,7 @@ function loadChapter(){
 
 
     /* ========================= */
-    /* NEXT BUTTON */
+    /* NEXT CHAPTER BUTTON */
     /* ========================= */
 
     if(
@@ -173,7 +206,9 @@ function loadChapter(){
     }
 
 
-    /* Scroll to top */
+    /* ========================= */
+    /* SCROLL TO TOP */
+    /* ========================= */
 
     window.scrollTo({
         top:0,
@@ -181,7 +216,9 @@ function loadChapter(){
     });
 
 
-    /* Activate panel animation */
+    /* ========================= */
+    /* CHECK PANELS */
+    /* ========================= */
 
     setupPanelAnimations();
 
@@ -198,29 +235,22 @@ function setupPanelAnimations(){
         document.querySelectorAll(".panel");
 
 
-    function checkPanels(){
+    panels.forEach(panel => {
 
-        panels.forEach(panel => {
-
-            const top =
-                panel.getBoundingClientRect().top;
+        const top =
+            panel.getBoundingClientRect().top;
 
 
-            if(
-                top <
-                window.innerHeight - 100
-            ){
+        if(
+            top <
+            window.innerHeight - 100
+        ){
 
-                panel.classList.add("show");
+            panel.classList.add("show");
 
-            }
+        }
 
-        });
-
-    }
-
-
-    checkPanels();
+    });
 
 }
 
@@ -293,7 +323,7 @@ startBtn.onclick = () => {
         introVideo.currentTime = 0;
 
 
-        /* Make sure video audio is enabled */
+        /* Enable video audio */
 
         introVideo.muted = false;
 
@@ -327,11 +357,10 @@ introVideo.onended = () => {
 
     clearTimeout(skipTimer);
 
-
     skipBtn.classList.remove("show");
 
 
-    /* Remember intro was watched */
+    /* Remember intro */
 
     localStorage.setItem(
         "introWatched",
@@ -339,7 +368,7 @@ introVideo.onended = () => {
     );
 
 
-    /* Show Continue Reading */
+    /* Show Continue */
 
     continueBtn.classList.add("show");
 
@@ -354,15 +383,11 @@ function enterStory(){
 
     clearTimeout(skipTimer);
 
-
     introVideo.pause();
-
 
     skipBtn.classList.remove("show");
 
-
     continueBtn.classList.remove("show");
-
 
     videoSection.classList.add("fadeOut");
 
@@ -376,7 +401,7 @@ function enterStory(){
         story.classList.add("fadeIn");
 
 
-        /* Load Chapter 1 */
+        /* Always start at Chapter 1 */
 
         currentChapter = 0;
 
@@ -393,13 +418,10 @@ function enterStory(){
 
 skipBtn.onclick = () => {
 
-    /* Remember intro was skipped */
-
     localStorage.setItem(
         "introWatched",
         "true"
     );
-
 
     enterStory();
 
@@ -412,13 +434,10 @@ skipBtn.onclick = () => {
 
 continueBtn.onclick = () => {
 
-    /* Remember intro was watched */
-
     localStorage.setItem(
         "introWatched",
         "true"
     );
-
 
     enterStory();
 
@@ -434,8 +453,6 @@ if(
     === "true"
 ){
 
-    /* Skip intro */
-
     intro.style.display = "none";
 
     videoSection.style.display = "none";
@@ -443,7 +460,9 @@ if(
     story.style.display = "block";
 
 
-    /* Load first chapter */
+    /* Start at Chapter 1 */
+
+    currentChapter = 0;
 
     loadChapter();
 

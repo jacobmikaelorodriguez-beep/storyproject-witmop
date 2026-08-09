@@ -8,6 +8,8 @@ body{
 
     background:black;
 
+    color:white;
+
     overflow-x:hidden;
 
     font-family:'Poppins', sans-serif;
@@ -148,7 +150,9 @@ body{
 }
 
 
-/* Dark Overlay */
+/* ========================= */
+/* VIDEO OVERLAY */
+/* ========================= */
 
 #overlay{
 
@@ -223,7 +227,7 @@ body{
 
 
 /* ========================= */
-/* CONTINUE READING */
+/* CONTINUE BUTTON */
 /* ========================= */
 
 #continueBtn{
@@ -284,20 +288,24 @@ body{
 
 
 /* ========================= */
-/* STORY TITLE */
+/* CHAPTER TITLE */
 /* ========================= */
 
-#storyTitle{
+#chapterTitle{
 
     min-height:100vh;
 
     display:flex;
+
+    flex-direction:column;
 
     justify-content:center;
 
     align-items:center;
 
     text-align:center;
+
+    background:black;
 
     padding:40px;
 
@@ -306,15 +314,13 @@ body{
 }
 
 
-#storyTitle h1{
+#chapterNumber{
 
     font-size:60px;
 
-    text-transform:uppercase;
-
-    max-width:90%;
-
     margin:0;
+
+    text-transform:uppercase;
 
     background:linear-gradient(
         to right,
@@ -336,9 +342,29 @@ body{
 }
 
 
+#chapterName{
+
+    font-size:30px;
+
+    margin-top:15px;
+
+    color:#aaa;
+
+}
+
+
 /* ========================= */
-/* MANHWA PANELS */
+/* PANELS */
 /* ========================= */
+
+#panels{
+
+    width:100%;
+
+    background:black;
+
+}
+
 
 .panel{
 
@@ -360,6 +386,75 @@ body{
     opacity:1;
 
     transform:translateY(0);
+
+}
+
+
+/* ========================= */
+/* CHAPTER NAVIGATION */
+/* ========================= */
+
+#chapterNavigation{
+
+    min-height:300px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:20px;
+
+    padding:50px 20px;
+
+    box-sizing:border-box;
+
+    background:black;
+
+}
+
+
+#previousChapter,
+#nextChapter{
+
+    padding:18px 35px;
+
+    font-size:18px;
+
+    border:none;
+
+    border-radius:40px;
+
+    cursor:pointer;
+
+    background:white;
+
+    color:black;
+
+    transition:.3s;
+
+}
+
+
+#previousChapter:hover:not(:disabled),
+#nextChapter:hover:not(:disabled){
+
+    transform:scale(1.08);
+
+    box-shadow:0 0 30px crimson;
+
+}
+
+
+/* Disabled buttons */
+
+#previousChapter:disabled,
+#nextChapter:disabled{
+
+    opacity:.3;
+
+    cursor:not-allowed;
 
 }
 
@@ -454,6 +549,52 @@ body{
         transform:scale(1);
 
         box-shadow:0 0 15px crimson;
+
+    }
+
+}
+
+
+/* ========================= */
+/* MOBILE */
+/* ========================= */
+
+@media (max-width:600px){
+
+    #intro h1{
+
+        font-size:35px;
+
+    }
+
+
+    #chapterNumber{
+
+        font-size:40px;
+
+    }
+
+
+    #chapterName{
+
+        font-size:22px;
+
+    }
+
+
+    #chapterNavigation{
+
+        flex-direction:column;
+
+    }
+
+
+    #previousChapter,
+    #nextChapter{
+
+        width:80%;
+
+        max-width:300px;
 
     }
 

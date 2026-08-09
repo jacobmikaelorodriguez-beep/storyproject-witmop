@@ -51,31 +51,11 @@ const nextChapter =
 */
 
 const chapters = [
-
     {
         number: 1,
         name: "A well-known tech",
         panels: 9
     },
-
-    {
-        number: 2,
-        name: "Chapter 2 Name",
-        panels: 5
-    },
-
-    {
-        number: 3,
-        name: "Crossing Paths with You",
-        panels: 7
-    },
-
-    {
-        number: 4,
-        name: "For The Girl Who Kept Dropping Her Guard",
-        panels: 6
-    }
-
 ];
 
 
@@ -151,15 +131,13 @@ function loadChapter(){
                ...
         */
 
-        img.src =
-            `Chapter-${chapter.number}/Panel${i}.jpeg`;
+        img.src = `Chapter-${chapter.number}/Panel${i}.jpeg`;
 
 
         img.classList.add("panel");
 
 
-        img.alt =
-            `Chapter ${chapter.number}, Panel ${i}`;
+        img.alt = `Chapter ${chapter.number}, Panel ${i}`;
 
 
         panelsContainer.appendChild(img);

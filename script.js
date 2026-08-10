@@ -32,6 +32,9 @@ const chapterNumber =
 const chapterName =
     document.getElementById("chapterName");
 
+const backToIntro =
+    document.getElementById("backToIntro");
+
 const previousChapter =
     document.getElementById("previousChapter");
 
@@ -43,14 +46,33 @@ const nextChapter =
 /* CHAPTER DATA */
 /* ========================= */
 /*
-   Put your chapters here.
+    To add another chapter:
 
-   "number" = folder number
-   "name"   = chapter title
-   "panels" = number of panels
+    1. Create a folder:
+
+       Chapter-3
+
+    2. Put the panels inside:
+
+       Panel1.jpeg
+       Panel2.jpeg
+       Panel3.jpeg
+       etc.
+
+    3. Add a new block here.
+
+    Example:
+
+    {
+        number: 3,
+        name: "Chapter 3 Name",
+        panels: 7
+    }
+
 */
 
 const chapters = [
+
     {
         number: 1,
         name: "A well-known tech",
@@ -61,7 +83,8 @@ const chapters = [
         number: 2,
         name: "Kenji's Life",
         panels: 3
-    },
+    }
+
 ];
 
 
@@ -122,28 +145,36 @@ function loadChapter(){
 
 
         /*
-           IMPORTANT:
+            GitHub folder structure:
 
-           This matches your GitHub folders:
+            Chapter-1/Panel1.jpeg
+            Chapter-1/Panel2.jpeg
 
-           Chapter-1/
-               Panel1.jpeg
-               Panel2.jpeg
-               ...
-
-           Chapter-2/
-               Panel1.jpeg
-               Panel2.jpeg
-               ...
+            Chapter-2/Panel1.jpeg
+            Chapter-2/Panel2.jpeg
         */
 
-        img.src = `Chapter-${chapter.number}/Panel${i}.jpeg`;
+        img.src =
+            `Chapter-${chapter.number}/Panel${i}.jpeg`;
 
 
         img.classList.add("panel");
 
 
-        img.alt = `Chapter ${chapter.number}, Panel ${i}`;
+        img.alt =
+            `Chapter ${chapter.number}, Panel ${i}`;
+
+
+        /* Check if image exists */
+
+        img.onerror = function(){
+
+            console.error(
+                "Could not load:",
+                this.src
+            );
+
+        };
 
 
         panelsContainer.appendChild(img);
@@ -201,7 +232,7 @@ function loadChapter(){
 
 
     /* ========================= */
-    /* CHECK PANELS */
+    /* SHOW VISIBLE PANELS */
     /* ========================= */
 
     setupPanelAnimations();
@@ -210,7 +241,7 @@ function loadChapter(){
 
 
 /* ========================= */
-/* PANEL ANIMATIONS */
+/* PANEL SCROLL ANIMATION */
 /* ========================= */
 
 function setupPanelAnimations(){
@@ -287,6 +318,60 @@ previousChapter.onclick = () => {
 
 
 /* ========================= */
+/* BACK TO INTRO */
+/* ========================= */
+
+backToIntro.onclick = () => {
+
+    /*
+        Remove the saved intro status.
+
+        This means the intro will play
+        again the next time the user
+        clicks the surprise button.
+    */
+
+    localStorage.removeItem(
+        "introWatched"
+    );
+
+
+    /* Stop and reset video */
+
+    introVideo.pause();
+
+    introVideo.currentTime = 0;
+
+
+    /* Clear skip timer */
+
+    clearTimeout(skipTimer);
+
+
+    /* Hide story */
+
+    story.style.display = "none";
+
+    story.classList.remove("fadeIn");
+
+
+    /* Show intro */
+
+    intro.style.display = "flex";
+
+    intro.classList.remove("fadeOut");
+
+
+    /* Reset video buttons */
+
+    skipBtn.classList.remove("show");
+
+    continueBtn.classList.remove("show");
+
+};
+
+
+/* ========================= */
 /* START INTRO */
 /* ========================= */
 
@@ -307,7 +392,10 @@ startBtn.onclick = () => {
         introVideo.currentTime = 0;
 
 
-        /* Enable video audio */
+        /*
+            The audio is inside intro.mp4.
+            No MP3 is required.
+        */
 
         introVideo.muted = false;
 
@@ -341,6 +429,7 @@ introVideo.onended = () => {
 
     clearTimeout(skipTimer);
 
+
     skipBtn.classList.remove("show");
 
 
@@ -352,7 +441,7 @@ introVideo.onended = () => {
     );
 
 
-    /* Show Continue */
+    /* Show Continue Reading */
 
     continueBtn.classList.add("show");
 
@@ -367,11 +456,14 @@ function enterStory(){
 
     clearTimeout(skipTimer);
 
+
     introVideo.pause();
+
 
     skipBtn.classList.remove("show");
 
     continueBtn.classList.remove("show");
+
 
     videoSection.classList.add("fadeOut");
 
@@ -385,7 +477,7 @@ function enterStory(){
         story.classList.add("fadeIn");
 
 
-        /* Always start at Chapter 1 */
+        /* Start at Chapter 1 */
 
         currentChapter = 0;
 
@@ -407,6 +499,7 @@ skipBtn.onclick = () => {
         "true"
     );
 
+
     enterStory();
 
 };
@@ -423,6 +516,7 @@ continueBtn.onclick = () => {
         "true"
     );
 
+
     enterStory();
 
 };
@@ -437,14 +531,17 @@ if(
     === "true"
 ){
 
+    /*
+        Intro has already been watched,
+        so go straight to the story.
+    */
+
     intro.style.display = "none";
 
     videoSection.style.display = "none";
 
     story.style.display = "block";
 
-
-    /* Start at Chapter 1 */
 
     currentChapter = 0;
 

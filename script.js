@@ -59,7 +59,7 @@ const chapters = [
 
     {
         number: 2,
-        name: "The Life of Kenji",
+        name: "Kenji's Life",
         panels: 3
     },
 ];

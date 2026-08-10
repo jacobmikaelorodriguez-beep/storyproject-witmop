@@ -56,6 +56,12 @@ const chapters = [
         name: "A well-known tech",
         panels: 9
     },
+
+    {
+        number: 2,
+        name: "The Life of Kenji",
+        panels: 3
+    }
 ];
 
 

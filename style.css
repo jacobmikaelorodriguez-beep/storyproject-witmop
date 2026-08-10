@@ -370,6 +370,8 @@ body{
 
     width:100%;
 
+    height:auto;
+
     display:block;
 
     opacity:0;
@@ -415,6 +417,7 @@ body{
 }
 
 
+#backToIntro,
 #previousChapter,
 #nextChapter{
 
@@ -437,6 +440,7 @@ body{
 }
 
 
+#backToIntro:hover,
 #previousChapter:hover:not(:disabled),
 #nextChapter:hover:not(:disabled){
 
@@ -587,6 +591,7 @@ body{
     }
 
 
+    #backToIntro,
     #previousChapter,
     #nextChapter{
 

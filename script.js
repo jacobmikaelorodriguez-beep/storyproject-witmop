@@ -61,7 +61,7 @@ const chapters = [
         number: 2,
         name: "The Life of Kenji",
         panels: 3
-    }
+    },
 ];
 
 

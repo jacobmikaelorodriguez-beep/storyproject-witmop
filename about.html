@@ -6,6 +6,9 @@
     <link rel="stylesheet" href="Garment.css">
 </head>
 <body>
+<audio autoplay loop>
+    <source src="bgmusic_910SdwEl.mp3" type="audio/mpeg">
+</audio>
 <header>
     <h1>About My Garments</h1>
     <p>The Clothes I Wear</p>
@@ -29,6 +32,37 @@
     </ul>
     <img src="SHAuniform.png" alt="Sacred Heart Academy Unifrom">
 </section>
+<div class="music-player">
+    <span>Background Music</span>
+
+    <audio id="bgMusic" autoplay loop>
+        <source src="bgmusic_910SdwEl.mp3" type="audio/mpeg">
+    </audio>
+
+    <label for="volumeSlider">Volume</label>
+    <input
+        type="range"
+        id="volumeSlider"
+        min="0"
+        max="100"
+        value="50"
+    >
+    <span id="volumeValue">50%</span>
+</div>
+
+<script>
+    const music = document.getElementById("bgMusic");
+    const slider = document.getElementById("volumeSlider");
+    const value = document.getElementById("volumeValue");
+
+    music.volume = 0.5;
+
+    slider.addEventListener("input", function () {
+        music.volume = slider.value / 100;
+        value.textContent = slider.value + "%";
+    });
+</script>
+
 <footer><p>Created by: Jacob Mikaelo Rodriguez | Grade 10 - Zeus</p></footer>
 </body>
 </html>

@@ -1,0 +1,112 @@
+:root {
+    --forest: #174D32;
+    --dark-green: #226B45;
+    --leaf-green: #388E5A;
+    --sage: #8FBF9F;
+    --mint: #D9F0DF;
+    --pale-green: #F1F8F2;
+    --white-green: #FAFDFB;
+    --text: #243B2D;
+}
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: var(--pale-green);
+    color: var(--text);
+    line-height: 1.7;
+}
+header {
+    text-align: center;
+    padding: 45px 20px;
+    background: linear-gradient(
+        135deg,
+        var(--forest),
+        var(--dark-green),
+        var(--leaf-green)
+    );
+    color: white;
+}
+header h1 {
+    font-size: 38px;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+}
+header p {
+    color: var(--mint);
+    margin: 0;
+}
+nav {
+    text-align: center;
+    padding: 16px 10px;
+    background-color: var(--mint);
+    border-bottom: 3px solid var(--sage);
+}
+nav a {
+    display: inline-block;
+    text-decoration: none;
+    margin: 5px 8px;
+    padding: 7px 10px;
+    color: var(--forest);
+    font-weight: bold;
+    border-radius: 8px;
+    transition: background-color 0.3s, color 0.3s;
+}
+nav a:hover {
+    background-color: var(--dark-green);
+    color: white;
+}
+section {
+    width: 85%;
+    max-width: 850px;
+    box-sizing: border-box;
+    margin: 28px auto;
+    padding: 28px;
+    background-color: var(--white-green);
+    border-left: 6px solid var(--leaf-green);
+    border-radius: 14px;
+    box-shadow: 0 4px 12px #174D3215;
+}
+h2 {
+    text-align: center;
+    color: var(--dark-green);
+    border-bottom: 2px solid var(--mint);
+    padding-bottom: 10px;
+}
+p {
+    line-height: 1.8;
+}
+ul {
+    padding-left: 25px;
+}
+li {
+    margin-bottom: 10px;
+}
+li::marker {
+    color: var(--leaf-green);
+}
+img {
+    display: block;
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+    margin: 22px auto;
+    border: 4px solid var(--mint);
+    border-radius: 14px;
+}
+section a {
+    color: var(--dark-green);
+    font-weight: bold;
+}
+section a:hover {
+    color: var(--leaf-green);
+}
+footer {
+    text-align: center;
+    padding: 22px;
+    background-color: var(--forest);
+    color: white;
+    border-top: 5px solid var(--sage);
+}
+footer p {
+    margin: 0;
+}
